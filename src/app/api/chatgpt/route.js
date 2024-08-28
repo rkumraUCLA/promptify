@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import axios from "axios";
 import OpenAI from "openai";
 
 const gpt = new OpenAI();
@@ -26,27 +27,73 @@ export async function POST(req) {
 
   // testing image 
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      {
-        role: "system",
-        content: `I will give you an image. It could be an image of a place, a person, what a person may be doing. Your job is to give me only 5 adjectives based on this image.`,
-      },
-      {
-        role: "user",
-        content: [
-          // {type: "text", text: "What’s in this image?"},
-          {
-            type: "image_url",
-            image_url: {
-              "url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Anatomy_of_a_Sunset-2.jpg",
-            },
-          },
-        ],
-      }
-    ],
-  });
+  // const completion = await openai.chat.completions.create({
+  //   model: "gpt-4o-mini",
+  //   messages: [
+  //     {
+  //       role: "system",
+  //       content: `I will give you an image. It could be an image of a place, a person, what a person may be doing. Your job is to give me only 5 adjectives based on this image.`,
+  //     },
+  //     {
+  //       role: "user",
+  //       content: [
+  //         // {type: "text", text: "What’s in this image?"},
+  //         {
+  //           type: "image_url",
+  //           image_url: {
+  //             "url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Anatomy_of_a_Sunset-2.jpg",
+  //           },
+  //         },
+  //       ],
+  //     }
+  //   ],
+  // });
 
-  return res.json({ result: response}, { status: 200 });
+  // return res.json({ result: response}, { status: 200 });
+
+
+  // testing spotify
+  const authToken = Buffer.from(
+    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  ).toString("base64");
+
+  try {
+    const tokenResponse = await axios.post(
+      "https://accounts.spotify.com/api/token",
+      new URLSearchParams({
+        grant_type: "client_credentials",
+      }),
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Basic ${authToken}`,
+        },
+      }
+    );
+
+    const accessToken = tokenResponse.data.access_token;
+
+    const recommendationResponse = await axios.get(
+      "https://api.spotify.com/v1/recommendations",
+      {
+        params: {
+          limit: 3,
+          seed_genres: "pop", 
+          market: "US",
+        },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    return NextResponse.json(
+      { result: recommendationResponse.data.tracks },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+  }
+
 }
