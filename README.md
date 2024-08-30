@@ -44,12 +44,31 @@ Promptify is a unique web application that generates personalized music recommen
 - **Image Input:** Upload a picture, and the AI analyzes the mood to suggest relevant songs.
 - **Dynamic Music Suggestions:** Get song details like name, artist, and album cover with direct Spotify links.
 
-## Tech Stack
+#### Tech Stack
+- [![Next.js][Next.js]][Next-url]
+- [![React][React.js]][React-url]
+- [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 
-- **Frontend:** React (Next.js) with Tailwind CSS for responsive design.
-- **APIs Used:** 
-  - **OpenAI API:** To process text and image inputs, generating appropriate song parameters.
-  - **Spotify API:** To fetch song recommendations based on the parameters provided by OpenAI.
+#### Libraries/APIs
+- [![OpenAI][OpenAI]][OpenAI-url]
+- [![Spotify API][SpotifyAPI]][SpotifyAPI-url]
+- [![Axios][Axios]][Axios-url]
+
+#### Hosting
+- [![Vercel][Vercel]][Vercel-url]
+
+[Next.js]: https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[TailwindCSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[TailwindCSS-url]: https://tailwindcss.com/
+[OpenAI]: https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white
+[OpenAI-url]: https://openai.com/
+[SpotifyAPI]: https://img.shields.io/badge/Spotify_API-1DB954?style=for-the-badge&logo=spotify&logoColor=white
+[SpotifyAPI-url]: https://developer.spotify.com/
+[Axios]: https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white
+[Axios-url]: https://axios-http.com/
   
 ## Installation
 
