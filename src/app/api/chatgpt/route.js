@@ -9,36 +9,6 @@ export async function POST(req) {
   const inputType = params.image ? "image" : "text";
   console.log(params)
 
-  // testing image 
-
-  // const completion = await openai.chat.completions.create({
-  //   model: "gpt-4o-mini",
-  //   messages: [
-  //     {
-  //       role: "system",
-  //       content: `I will give you an image. It could be an image of a place, a person, what a person may be doing. Your job is to give me only 5 adjectives based on this image.`,
-  //     },
-  //     {
-  //       role: "user",
-  //       content: [
-  //         // {type: "text", text: "What’s in this image?"},
-  //         {
-  //           type: "image_url",
-  //           image_url: {
-  //             "url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Anatomy_of_a_Sunset-2.jpg",
-  //           },
-  //         },
-  //       ],
-  //     }
-  //   ],
-  // });
-
-  // const rec_info = JSON.parse(generatedData.choices[0].message.content)
-  // console.log(NextResponse.json(gpt_response.choices[0].message.content));
-  // return NextResponse.json({ gpt_response}, { status: 200 });
-
-
-  // testing spotify
   const authToken = Buffer.from(
     `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
   ).toString("base64");
