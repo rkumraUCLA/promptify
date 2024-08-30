@@ -16,17 +16,6 @@ export default function Home() {
     setInput(e.target.value);
   };
   
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setImage(reader.result); // Base64 string
-  //     };
-  //     reader.readAsDataURL(file); // Convert image to Base64
-  //   }
-  // };
-
   const resizeImage = (file, maxWidth, maxHeight, callback) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -40,7 +29,6 @@ export default function Home() {
         let width = img.width;
         let height = img.height;
   
-        // Calculate new dimensions
         if (width > maxWidth || height > maxHeight) {
           if (width > height) {
             height = (height * maxWidth) / width;
@@ -54,7 +42,7 @@ export default function Home() {
         canvas.width = width;
         canvas.height = height;
         ctx.drawImage(img, 0, 0, width, height);
-        callback(canvas.toDataURL('image/jpeg', 0.7)); // Adjust compression ratio (0.0 - 1.0)
+        callback(canvas.toDataURL('image/jpeg', 0.7)); 
       };
     };
   };
@@ -63,12 +51,11 @@ export default function Home() {
     const file = e.target.files[0];
     setImageName(file.name)
     if (file) {
-      resizeImage(file, 800, 800, (resizedImage) => { // Set max width and height as needed
-        setImage(resizedImage); // Set the resized and compressed Base64 string
+      resizeImage(file, 800, 800, (resizedImage) => { 
+        setImage(resizedImage);
       });
     }
   };  
-
 
   const handleDragOver = (e) => {
     e.preventDefault();
