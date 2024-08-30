@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         xxx: ['Roboto', 'sans-serif'],
         biorhyme: ['BioRhyme', 'serif'],
+        suse: ['Suse', 'serif']
       },
     },
   },

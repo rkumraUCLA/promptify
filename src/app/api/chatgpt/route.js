@@ -5,25 +5,9 @@ import OpenAI from "openai";
 const gpt = new OpenAI();
 
 export async function POST(req) {
-  const res = NextResponse;
   const { params } = await req.json();
-
-  // const response = await gpt.chat.completions.create({
-  //   model: "gpt-3.5-turbo-0125",
-  //   messages: [
-  //     {
-  //       role: "system",
-  //       content: `You are a music recommender. I will give you a sentence. It could be a description of a place, a word, what a person may be doing. Your job is to recommend 3 songs back to them.`,
-  //     },
-  //     // {role: "user", content: "I'm at the beach."},
-  //     // {role: "assistant", content: "You should listen to pop music, it would fit well with the beach vibes."},
-  //     // {"role": "user", "content": "Where was it played?"}
-  //     {
-  //       role: "user",
-  //       content: `${params.sentence}`,
-  //     },
-  //   ],
-  // });
+  const inputType = params.image ? "image" : "text";
+  console.log(params)
 
   // testing image 
 
@@ -49,7 +33,9 @@ export async function POST(req) {
   //   ],
   // });
 
-  // return res.json({ result: response}, { status: 200 });
+  // const rec_info = JSON.parse(generatedData.choices[0].message.content)
+  // console.log(NextResponse.json(gpt_response.choices[0].message.content));
+  // return NextResponse.json({ gpt_response}, { status: 200 });
 
 
   // testing spotify
@@ -73,22 +59,55 @@ export async function POST(req) {
 
     const accessToken = tokenResponse.data.access_token;
 
-    const recommendationResponse = await axios.get(
-      "https://api.spotify.com/v1/recommendations",
+    const genreResponse = await axios.get(
+      "https://api.spotify.com/v1/recommendations/available-genre-seeds",
       {
-        params: {
-          limit: 3,
-          seed_genres: "pop", 
-          market: "US",
-        },
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       }
     );
 
+    const genres = genreResponse.data.genres
+    
+    const gptResponse = await gpt.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: `You are an assistant can handle an image or text input that generates JSON objects to be used with the Spotify Recommendations API. If given text, generate a JSON object for the Spotify API. If given an image, analyze its content and generate a JSON object based on the detected mood or theme. The JSON object should include the following fields: "limit": ${params.limit}, "market": US, "seed_genres": A comma-separated string of genres related to the mood or theme out of these genres available ${genres}, "target_acousticness": A float between 0 and 1 indicating the desired acousticness, "target_danceability": A float between 0 and 1 indicating the desired danceability, "target_energy": A float between 0 and 1 indicating the desired energy level, "target_instrumentalness": A float between 0 and 1 indicating the desired instrumentalness, "target_liveness": A float between 0 and 1 indicating the desired liveness, "target_tempo": Target tempo (BPM) (optional), "target_popularity": An integer between 0 and 100 indicating the desired popularity (optional). Generate a JSON object with these fields based on the input. If you deem any of them to be 0, don't include it. If the input has any information about the danceability, instrumentalness, or any other aspects of the song, recognize those and change it in the JSON.`
+          ,
+        },
+        // {role: "user", content: "I'm at the beach."},
+        // {role: "assistant", content: "You should listen to pop music, it would fit well with the beach vibes."},
+        // {"role": "user", "content": "Where was it played?"}
+        {
+          role: "user",
+          content: inputType === "image" ? `Analyze this image URL and provide JSON: ${params.image}` : params.sentence,
+        },
+      ],
+    });
+
+    const rawResponse = gptResponse.choices[0].message.content.trim();
+
+    const jsonMatch = rawResponse.match(/\{[\s\S]*\}/);
+    const rec_info = JSON.parse(jsonMatch[0]);
+    console.log(rec_info)
+
+    const recResponse = await axios.get(
+      "https://api.spotify.com/v1/recommendations",
+      {
+        params: rec_info,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+    // console.log(recResponse.data.tracks)
+
     return NextResponse.json(
-      { result: recommendationResponse.data.tracks },
+      { result: recResponse.data.tracks },
       { status: 200 }
     );
   } catch (error) {
