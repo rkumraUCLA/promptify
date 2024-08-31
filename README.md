@@ -1,4 +1,4 @@
-# Promptify - An AI-Driven Music Recommendation App 🎵
+# Promptify - An AI-Driven Music Recommendation App 
 
 Promptify is a web application I created to generate tailored music recommendations based on user input. Simply upload an image or write a sentence about your vibe, what you're doing, or anything you want; the app then uses OpenAI's GPT models to create a cutsomized music experience using Spotify's vast music library.
 
