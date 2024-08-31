@@ -14,8 +14,8 @@ Promptify is a web application I created to generate tailored music recommendati
 - **Dynamic Music Suggestions:** Get song details like name, artist, and album cover with direct Spotify links.
 
 #### Tech Stack
-- [![Next.js][Next.js]][Next-url]
 - [![React][React.js]][React-url]
+- [![JavaScript][JavaScript]][JavaScript-url]
 - [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 
 #### Libraries/APIs
@@ -23,10 +23,10 @@ Promptify is a web application I created to generate tailored music recommendati
 - [![Spotify API][SpotifyAPI]][SpotifyAPI-url]
 - [![Axios][Axios]][Axios-url]
 
-[Next.js]: https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[JavaScript]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [TailwindCSS]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
 [TailwindCSS-url]: https://tailwindcss.com/
 [OpenAI]: https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white
