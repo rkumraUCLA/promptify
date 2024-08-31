@@ -34,9 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
-# Promptify - AI-Driven Music Recommendation App 🎵
+# Promptify - An AI-Driven Music Recommendation App 🎵
 
-Promptify is a unique web application that generates personalized music recommendations based on user input. Whether you provide a text description or an image, the app uses OpenAI's GPT models to create a tailored music experience using Spotify's vast music library.
+Promptify is a web application I created to generate tailored music recommendations based on user input. Simply upload an image or write a sentence about your vibe, what you're doing, or anything you want; the app then uses OpenAI's GPT models to create a cutsomized music experience using Spotify's vast music library.
 
 ## Features
 
@@ -53,9 +53,6 @@ Promptify is a unique web application that generates personalized music recommen
 - [![OpenAI][OpenAI]][OpenAI-url]
 - [![Spotify API][SpotifyAPI]][SpotifyAPI-url]
 - [![Axios][Axios]][Axios-url]
-
-#### Hosting
-- [![Vercel][Vercel]][Vercel-url]
 
 [Next.js]: https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
@@ -96,3 +93,14 @@ Promptify is a unique web application that generates personalized music recommen
 ## Usage
 1. Choose Input Type: Click on "Write me a sentence" for text input or "Upload a pic" for image input.
 3. Get Recommendations: Click "Get Recs" to fetch songs based on your input.
+
+## License
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact Me
+Rishi Kumra: rkumra@ucla.edu
+
+## Acknowledgements
+* [README Template](https://github.com/othneildrew/Best-README-Template)
+* [OpenAI API](https://platform.openai.com/docs/introduction)
+* [Spotify API](https://developer.spotify.com/documentation/web-api/)
