@@ -1,47 +1,16 @@
-<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
 # Promptify - An AI-Driven Music Recommendation App 🎵
 
 Promptify is a web application I created to generate tailored music recommendations based on user input. Simply upload an image or write a sentence about your vibe, what you're doing, or anything you want; the app then uses OpenAI's GPT models to create a cutsomized music experience using Spotify's vast music library.
+
+### Preview
+
+![App Screenshot](./assets/preview.png)
 
 ## Features
 
 - **Text Input:** Describe a scene, mood, or activity, and get music recommendations to match.
 - **Image Input:** Upload a picture, and the AI analyzes the mood to suggest relevant songs.
+- **Number of Recommendations**: Choose the number of songs you want to receive, from 1 to 12, to match your preference.
 - **Dynamic Music Suggestions:** Get song details like name, artist, and album cover with direct Spotify links.
 
 #### Tech Stack
@@ -91,8 +60,8 @@ Promptify is a web application I created to generate tailored music recommendati
 5. Open your browser and navigate to `http://localhost:3000`.
 
 ## Usage
-1. Choose Input Type: Click on "Write me a sentence" for text input or "Upload a pic" for image input.
-3. Get Recommendations: Click "Get Recs" to fetch songs based on your input.
+1. Choose Input Type: Click on "Write me a sentence" for text input or "Upload a pic" for image input then input what you chose.
+3. Get Recommendations: Choose how many songs you want to see then click "Get Recs" to fetch songs based on your input.
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
