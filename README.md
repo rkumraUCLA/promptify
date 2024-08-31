@@ -40,7 +40,7 @@ Promptify is a web application I created to generate tailored music recommendati
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/promptify.git
+   git clone https://github.com/rkumraUCLA/promptify.git
    cd promptify
 
 2. Install Dependencies
