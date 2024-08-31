@@ -114,8 +114,8 @@ export default function Home() {
         }
       `}</style>
       <main className="flex min-h-screen flex-col items-center justify-top bg-black px-4 font-suse">
-        <h1 className="m-10 flex text-white font-bold text-4xl tracking-wide">promptify</h1>
-        <p className="mb-10 text-center text-white font-medium text-xl tracking-wide">Find your next favorite track.</p>
+        <h1 className="mt-10 flex text-white font-bold text-4xl tracking-wide">promptify</h1>
+        <p className="mt-6 mb-8 text-center text-white font-medium text-xl tracking-wide">find your next favorite track.</p>
 
         <div className="flex flex-row items-center space-x-4 mb-5">
           <button
@@ -139,7 +139,7 @@ export default function Home() {
 
         {inputType === "text" ? (
           <textarea
-            className="mt-5 p-3 h-24 w-full max-w-lg bg-gray-50 rounded-lg text-black text-left border border-gray-300"
+            className="mt-3 p-3 h-24 w-full max-w-lg bg-gray-50 rounded-lg text-black text-left border border-gray-300"
             value={input}
             onChange={handleInputChange}
             placeholder="ex. I'm watching a sunset"
@@ -149,7 +149,7 @@ export default function Home() {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`mt-5 flex items-center justify-center w-full max-w-lg h-24 border-2 ${
+            className={`mt-3 flex items-center justify-center w-full max-w-lg h-24 border-2 ${
               dragging ? "border-blue-500" : "border-dashed border-gray-400"
             } rounded-lg bg-white`}
           >
@@ -178,19 +178,19 @@ export default function Home() {
           />
           <button
           onClick={handleSubmit}
-          className="mx-10 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-all duration-200"
+          className="mx-10 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all duration-200"
           >
           Get Recs
           </button>
         </div>
-        
-
 
         <div className="m-10 gap-x-10 gap-y-5 grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2">
           {recommendations.map((song, index) => (
             <div key={index} className="flex flex-col mb-10 items-center">
               <a href={song.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                <img src={song.album.images[0].url} alt={song.name} className="w-80 h-80 rounded-lg shadow-black shadow-lg transition-transform transform hover:scale-105" />
+                <img src={song.album.images[0].url} alt={song.name} className="w-64 h-64 rounded-lg transition-transform transform hover:scale-105 
+             shadow-lg shadow-gray-800 hover:shadow-xl hover:shadow-blue-500/50 
+             border border-gray-700" />
               </a>
               <div className="w-80 text-center">
                 <p className="mt-6 text-gray-500 text-sm">{song.artists[0].name}</p>
